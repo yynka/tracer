@@ -1,0 +1,15 @@
+# Network Scanner Dependencies
+netifaces>=0.11.0
+python-nmap>=0.7.1
+psutil>=5.9.0
+paramiko>=2.11.0
+
+# Packet Tracer Dependencies  
+scapy>=2.4.5
+
+# Optional Windows support
+pywinrm>=0.4.0
+
+# Database and utilities
+sqlite3  # Usually included with Python
+ipaddress  # Usually included with Python 3.3+ 
