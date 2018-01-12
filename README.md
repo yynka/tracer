@@ -28,30 +28,157 @@
 
 ---
 
-## Installation
+## Operation Modes
 
-### 1. Clone the repository:
-```bash
+### ■ **Discover Mode** (Network Reconnaissance)
+- [+] Multi-method device discovery using ARP, ping sweeps, and nmap
+- [+] Cross-platform device profiling (macOS, Linux, Windows detection)
+- [+] MAC address vendor identification with fallback databases
+- [+] Service detection and shared resource enumeration
+- [+] Authenticated scanning for enhanced device profiling
+- [+] SQLite database storage for persistent device profiles
+
+### ▲ **Monitor Mode** (Real-time Traffic Analysis)
+- [+] Live packet capture using Scapy for comprehensive monitoring
+- [+] Protocol analysis supporting TCP, UDP, ICMP, and application protocols
+- [+] Traffic direction classification (inbound, outbound, internal, transit)
+- [+] Flow tracking with connection state and statistics
+- [+] Device correlation linking traffic to discovered device profiles
+- [+] Real-time statistics with periodic reporting every 30 seconds
+
+### ▪ **Analyze Mode** (Intelligence & Reporting)
+- [+] Comprehensive network analysis combining device and traffic data
+- [+] Security assessment with anomaly detection capabilities
+- [+] High outbound traffic detection for potential data exfiltration
+- [+] Unknown device identification with significant network activity
+- [+] Protocol analysis for devices using unexpected communication methods
+- [+] JSON export functionality for integration with external tools
+
+---
+
+[![Windows](https://img.shields.io/badge/Windows-0078D4?style=flat&logo=windows&logoColor=white)](#windows)
+
+**Prerequisites:**
+- Python 3.6+ from [python.org](https://python.org)
+- nmap from [nmap.org/download.html](https://nmap.org/download.html)
+- Administrator privileges for packet capture
+
+**Setup:**
+```cmd
+# Clone repository
 git clone https://github.com/yynka/tracer.git
 cd tracer
-```
 
-### 2. Setup environment and install dependencies:
-```bash
 # Create and activate virtual environment
-python3 -m venv t
-source t/bin/activate  # Linux/macOS
-# or
-t\Scripts\activate     # Windows
+python -m venv t
+t\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
-./setup.sh
+
+# Verify installation
+python main.py --help
 ```
 
-### 3. Run tracer:
+**Usage:**
+```cmd
+# Discovery (no admin required)
+python main.py discover --fast --summary
+
+# Monitoring (requires Administrator Command Prompt)
+python main.py monitor
+
+# Analysis
+python main.py analyze --security --export
+```
+
+[![macOS](https://img.shields.io/badge/macOS-000000?style=flat&logo=apple&logoColor=white)](#macos)
+
+**Prerequisites:**
 ```bash
+# Install Homebrew if not installed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install dependencies
+brew install python nmap
+```
+
+**Setup:**
+```bash
+# Clone repository
+git clone https://github.com/yynka/tracer.git
+cd tracer
+
+# Create and activate virtual environment
+python3 -m venv t
+source t/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Verify installation
+python3 main.py --help
+```
+
+**Usage:**
+```bash
+# Discovery
 python3 main.py discover --fast --summary
+
+# Monitoring (requires sudo)
+sudo python3 main.py monitor
+
+# Analysis
+python3 main.py analyze --security --export
+```
+
+[![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat&logo=linux&logoColor=black)](#linux)
+
+**Prerequisites:**
+
+*Ubuntu/Debian:*
+```bash
+sudo apt update
+sudo apt install python3 python3-pip python3-venv nmap net-tools build-essential
+```
+
+*RHEL/CentOS/Fedora:*
+```bash
+sudo dnf install python3 python3-pip python3-venv nmap net-tools gcc
+```
+
+*Arch Linux:*
+```bash
+sudo pacman -S python python-pip nmap net-tools
+```
+
+**Setup:**
+```bash
+# Clone repository
+git clone https://github.com/yynka/tracer.git
+cd tracer
+
+# Create and activate virtual environment
+python3 -m venv t
+source t/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Verify installation
+python3 main.py --help
+```
+
+**Usage:**
+```bash
+# Discovery
+python3 main.py discover --fast --summary
+
+# Monitoring (requires sudo)
+sudo python3 main.py monitor
+
+# Analysis
+python3 main.py analyze --security --export
 ```
 
 ## Quick Demo
